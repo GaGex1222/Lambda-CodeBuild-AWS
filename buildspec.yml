@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - pip install PyMuPDF -t package/
+  build:
+    commands:
+      - cp lambda_function.py package/
+      - cd package
+      - zip -r ../deployment.zip .
+
+artifacts:
+  files:
+    - deployment.zip
